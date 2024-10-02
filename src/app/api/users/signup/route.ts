@@ -3,6 +3,7 @@ import User from "@/models/userModel"
 import {NextRequest,NextResponse} from "next/server"
 import bcryptjs from "bcryptjs"
 import { sendEmail } from "@/helpers/mailer"
+
 connect()
 
 export async function POST(request:NextRequest) {
@@ -10,8 +11,6 @@ export async function POST(request:NextRequest) {
         const reqBody = await request.json()
         const {username,email,password} = reqBody;
 
-        //validation
-        console.log(reqBody);
 
         const user = await User.findOne({email})
 
